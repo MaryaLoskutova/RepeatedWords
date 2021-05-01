@@ -41,7 +41,7 @@ namespace TextAnalyzer.ConsoleApp
             return topCount;
         }
 
-        private static string? GetPath()
+        private static string GetPath()
         {
             Console.WriteLine("Введите путь к файлу (default \"voyna-i-mir.txt\"):");
             var path = Console.ReadLine();

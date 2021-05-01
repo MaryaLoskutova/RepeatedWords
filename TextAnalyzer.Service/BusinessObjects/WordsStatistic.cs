@@ -6,19 +6,19 @@ namespace TextAnalyzer.Service.BusinessObjects
 {
     public class WordsStatistic
     {
-        private WordsOrderList _wordsOrder;
         private Dictionary<string, WordNode> _wordsDictionary;
+        private Dictionary<int, WordsOrderList> _countDictionary;
 
         public WordsStatistic()
         {
-            _wordsOrder = new WordsOrderList();
             _wordsDictionary = new Dictionary<string, WordNode>();
+            _countDictionary = new Dictionary<int, WordsOrderList>();
         }
 
         public void AddWord(string word, IEnumerable<string> neighbours = null)
         {
             IncrementWord(word);
-            _wordsOrder.Actualize(_wordsDictionary[word]);
+
             if (neighbours != null)
             {
                 AddNeighbours(word, neighbours);
@@ -29,7 +29,19 @@ namespace TextAnalyzer.Service.BusinessObjects
 
         public List<WordInfo> SelectTop(int count)
         {
-            return _wordsOrder.SelectTop(count);
+            var result = new List<WordInfo>();
+            var restCount = count;
+            foreach (var pair in _countDictionary.OrderByDescending(x => x.Key))
+            {
+                result.AddRange(pair.Value.SelectTop(restCount));
+                restCount = count - result.Count;
+                if (restCount <= 0)
+                {
+                    return result;
+                }
+            }
+
+            return result;
         }
 
         private void AddNeighbours(string word, IEnumerable<string> neighbours)
@@ -42,13 +54,39 @@ namespace TextAnalyzer.Service.BusinessObjects
 
         private void IncrementWord(string word)
         {
+            var wordInfo = ExtractWord(word);
+            wordInfo.Value.WordFrequency++;
+            PlaceToNewPosition(wordInfo);
+        }
+
+        private void PlaceToNewPosition(WordNode wordInfo)
+        {
+            if (!_countDictionary.ContainsKey(wordInfo.Value.WordFrequency))
+            {
+                _countDictionary[wordInfo.Value.WordFrequency] = new WordsOrderList();
+            }
+
+            _countDictionary[wordInfo.Value.WordFrequency].AddToTail(wordInfo);
+        }
+
+        private WordNode ExtractWord(string word)
+        {
             if (!_wordsDictionary.ContainsKey(word))
             {
                 var wordStatistic = new WordInfo(word);
                 _wordsDictionary[word] = new WordNode(wordStatistic);
+                return _wordsDictionary[word];
             }
 
-            _wordsDictionary[word].Value.WordFrequency++;
+            var wordInfo = _wordsDictionary[word];
+            var newFrequency = wordInfo.Value.WordFrequency;
+            _countDictionary[newFrequency].Remove(wordInfo);
+            if (_countDictionary[newFrequency].Empty())
+            {
+                _countDictionary.Remove(newFrequency);
+            }
+
+            return wordInfo;
         }
     }
 }

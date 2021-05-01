@@ -40,13 +40,13 @@ namespace TextAnalyzer.IntegrationTests
                 .SetName("Some words file");
 
             yield return new TestCaseData(
-                    "\\TestData\\SomeWords.txt",
+                    "TestData\\SomeWords.txt",
                     2,
                     new[] {"если (1) Neighbours: бы (1)", "бы (1) Neighbours: если (1), история (1)"})
                 .SetName("Some words with symbols file");
 
             yield return new TestCaseData(
-                    "\\TestData\\WarAndPeace.txt",
+                    "TestData\\WarAndPeace.txt",
                     5,
                     new[]
                     {
@@ -59,7 +59,7 @@ namespace TextAnalyzer.IntegrationTests
                 )
                 .SetName("War and Peace"); 
             yield return new TestCaseData(
-                    "\\TestData\\WithNumbers.txt",
+                    "TestData\\WithNumbers.txt",
                     5,
                     new[]
                     {

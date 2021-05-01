@@ -6,11 +6,31 @@ namespace TextAnalyzer.Service.BusinessObjects
     {
         private WordNode _head;
         private WordNode _tail;
-
-        public void Actualize(WordNode wordNode)
+        
+        public void AddToTail(WordNode wordNode)
         {
-            AddToTail(wordNode);
-            LiftToRightPosition(wordNode);
+            if (wordNode.Next != null
+                || wordNode.Previous != null)
+            {
+                return;
+            }
+
+            if (_tail != null)
+            {
+                _tail.Next = wordNode;
+                wordNode.Previous = _tail;
+            }
+
+            _tail = wordNode;
+            _head ??= wordNode;
+        }
+        
+        public void Remove(WordNode wordNode)
+        {
+            Connect(wordNode.Previous, wordNode.Next);
+            ActualizeBorders(wordNode);
+            wordNode.Next = null;
+            wordNode.Previous = null;
         }
 
         public List<WordInfo> SelectTop(int count)
@@ -28,36 +48,21 @@ namespace TextAnalyzer.Service.BusinessObjects
             return result;
         }
 
-        private void LiftToRightPosition(WordNode wordNode)
+        public bool Empty()
         {
-            while (wordNode.Previous != null
-                   && wordNode.Previous.Value.WordFrequency < wordNode.Value.WordFrequency)
-            {
-                Swap(wordNode);
-            }
+            return _head == null;
         }
 
-        private void Swap(WordNode wordNode)
+        private void ActualizeBorders(WordNode wordNode)
         {
-            var prev = wordNode.Previous;
-            
-            Connect(prev.Previous, wordNode);
-            Connect(prev, wordNode.Next);
-            Connect(wordNode, prev);
-            
-            ActualizeBorders(wordNode, prev);
-        }
-
-        private void ActualizeBorders(WordNode wordNode, WordNode prev)
-        {
-            if (_head == prev)
+            if (_head == wordNode)
             {
-                _head = wordNode;
+                _head = wordNode.Next;
             }
 
             if (_tail == wordNode)
             {
-                _tail = prev;
+                _tail = wordNode.Previous;
             }
         }
 
@@ -72,25 +77,6 @@ namespace TextAnalyzer.Service.BusinessObjects
             {
                 next.Previous = prev;
             }
-        }
-
-        private void AddToTail(WordNode wordNode)
-        {
-            if (wordNode.Next != null
-                || wordNode.Previous != null
-                || wordNode.Value.WordFrequency > 1)
-            {
-                return;
-            }
-
-            if (_tail != null)
-            {
-                _tail.Next = wordNode;
-                wordNode.Previous = _tail;
-            }
-
-            _tail = wordNode;
-            _head ??= wordNode;
         }
     }
 }
