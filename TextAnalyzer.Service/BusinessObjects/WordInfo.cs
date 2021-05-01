@@ -4,7 +4,7 @@ namespace TextAnalyzer.Service.BusinessObjects
 {
     public class WordInfo
     {
-        private int _topNeighboursCount = 5;
+        private readonly int _topNeighboursCount = 5;
 
         public WordInfo(string word)
         {
@@ -14,9 +14,8 @@ namespace TextAnalyzer.Service.BusinessObjects
 
         public string Word { get; }
         public int WordFrequency { get; set; }
-        private WordsStatistic Neighbours { get; }
-
-
+        public WordsStatistic Neighbours { get; }
+        
         public void AddNeighbour(string neighbour)
         {
             Neighbours.AddWord(neighbour);
@@ -30,6 +29,12 @@ namespace TextAnalyzer.Service.BusinessObjects
                 return info.ToString();
             }
 
+            FillNeighbours(info);
+            return info.ToString();
+        }
+
+        private void FillNeighbours(StringBuilder info)
+        {
             info.Append(" Neighbours: ");
             Neighbours.SelectTop(_topNeighboursCount)
                 .ForEach(x =>
@@ -39,7 +44,6 @@ namespace TextAnalyzer.Service.BusinessObjects
                 });
             var lastSeparatorLength = 2;
             info.Remove(info.Length - lastSeparatorLength, lastSeparatorLength);
-            return info.ToString();
         }
     }
 }

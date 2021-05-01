@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using JetBrains.ReSharper.TestRunner.Abstractions.Extensions;
 
 namespace TextAnalyzer.Service.BusinessObjects
 {
@@ -15,14 +16,10 @@ namespace TextAnalyzer.Service.BusinessObjects
             _countDictionary = new Dictionary<int, WordsOrderList>();
         }
 
-        public void AddWord(string word, IEnumerable<string> neighbours = null)
+        public void AddWord(string word, string[] neighbours = null)
         {
             IncrementWord(word);
-
-            if (neighbours != null)
-            {
-                AddNeighbours(word, neighbours);
-            }
+            neighbours?.ForEach(neighbour => _wordsDictionary[word].Value.AddNeighbour(neighbour));
         }
 
         public bool Any() => _wordsDictionary.Any();
@@ -42,14 +39,6 @@ namespace TextAnalyzer.Service.BusinessObjects
             }
 
             return result;
-        }
-
-        private void AddNeighbours(string word, IEnumerable<string> neighbours)
-        {
-            foreach (var neighbour in neighbours)
-            {
-                _wordsDictionary[word].Value.AddNeighbour(neighbour);
-            }
         }
 
         private void IncrementWord(string word)
@@ -79,11 +68,11 @@ namespace TextAnalyzer.Service.BusinessObjects
             }
 
             var wordInfo = _wordsDictionary[word];
-            var newFrequency = wordInfo.Value.WordFrequency;
-            _countDictionary[newFrequency].Remove(wordInfo);
-            if (_countDictionary[newFrequency].Empty())
+            var frequency = wordInfo.Value.WordFrequency;
+            _countDictionary[frequency].Remove(wordInfo);
+            if (_countDictionary[frequency].Empty())
             {
-                _countDictionary.Remove(newFrequency);
+                _countDictionary.Remove(frequency);
             }
 
             return wordInfo;

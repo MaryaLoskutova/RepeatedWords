@@ -18,7 +18,7 @@ namespace TextAnalyzer.Service
             return statistic.SelectTop(top).ToArray();
         }
 
-        private static IEnumerable<string> SelectNeighbours(string[] words, int index)
+        private static string[] SelectNeighbours(string[] words, int index)
         {
             var neighbours = new List<string>();
             if (!NeedSkip(words, index, NeighbourSide.Left))
@@ -31,7 +31,7 @@ namespace TextAnalyzer.Service
                 neighbours.Add(words[index + 1]);
             }
 
-            return neighbours.Except(new[] {words[index]});
+            return neighbours.ToArray();
         }
 
         private static bool NeedSkip(string[] words, int index, NeighbourSide side)
@@ -53,14 +53,14 @@ namespace TextAnalyzer.Service
                 return false;
             }
 
-            return words[index].GetHashCode() == words[neighbourIndex].GetHashCode();
+            return words[index] == words[neighbourIndex];
         }
 
         private static bool NeedSkip(string[] words, int index, int neighbourIndex)
         {
             if (neighbourIndex < 0
                 || neighbourIndex >= words.Length
-                || words[index].GetHashCode() == words[neighbourIndex].GetHashCode())
+                || words[index] == words[neighbourIndex])
             {
                 return true;
             }

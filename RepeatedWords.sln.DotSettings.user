@@ -3,14 +3,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c8ca54a_002D4e16_002D44c6_002D99fd_002Dda08b92236c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;TextAnalyzer.IntegrationTests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="D:\TestProjects\RepeatedWords\RepeatedWords\TextAnalyzer.IntegrationTests" Presentation="&amp;lt;TextAnalyzer.IntegrationTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1475f4cd_002Df79a_002D4b3b_002Db375_002D00d2369e57c0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AnalyzeWordsTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::CE89B718-AE1B-4A0E-A6EB-51004EB9F882::net5.0::TextAnalyzer.IntegrationTests.FileAnalyzingServiceTest.AnalyzeWordsTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1fcaf9af_002Dd122_002D43a0_002D8ce9_002D1aa905a1f044/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AnalyzeWordsTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::CE89B718-AE1B-4A0E-A6EB-51004EB9F882::net5.0::TextAnalyzer.IntegrationTests.FileAnalyzingServiceTest.AnalyzeWordsTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
+	
+	
 	</wpf:ResourceDictionary>
