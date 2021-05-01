@@ -4,39 +4,40 @@ namespace TextAnalyzer.Service.BusinessObjects
 {
     public class WordInfo
     {
-        private WordsStatistic _neighbours;
         private int _topNeighboursCount = 5;
 
         public WordInfo(string word)
         {
             Word = word;
-            _neighbours = new WordsStatistic();
+            Neighbours = new WordsStatistic();
         }
 
         public string Word { get; }
         public int WordFrequency { get; set; }
+        private WordsStatistic Neighbours { get; }
+
 
         public void AddNeighbour(string neighbour)
         {
-            _neighbours.AddWord(neighbour);
+            Neighbours.AddWord(neighbour);
         }
 
         public override string ToString()
         {
             var info = new StringBuilder($"{Word} ({WordFrequency})");
-            if (!_neighbours.Any())
+            if (!Neighbours.Any())
             {
                 return info.ToString();
             }
 
-            info.AppendLine("Neighbours: ");
-            _neighbours.SelectTop(_topNeighboursCount)
+            info.Append(" Neighbours: ");
+            Neighbours.SelectTop(_topNeighboursCount)
                 .ForEach(x =>
                 {
                     info.Append(x);
                     info.Append(", ");
                 });
-            var lastSeparatorLength = 4;
+            var lastSeparatorLength = 2;
             info.Remove(info.Length - lastSeparatorLength, lastSeparatorLength);
             return info.ToString();
         }

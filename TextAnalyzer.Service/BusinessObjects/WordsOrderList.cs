@@ -18,10 +18,11 @@ namespace TextAnalyzer.Service.BusinessObjects
             var result = new List<WordInfo>();
             var current = _head;
             while (current != null
-                   && count >= 0)
+                   && count > 0)
             {
                 result.Add(current.Value);
                 current = current.Next;
+                count--;
             }
 
             return result;
@@ -39,18 +40,16 @@ namespace TextAnalyzer.Service.BusinessObjects
         private void Swap(WordNode wordNode)
         {
             var prev = wordNode.Previous;
-            if (prev.Previous != null)
-            {
-                Connect(prev.Previous, wordNode);
-            }
-
-            var next = wordNode.Next;
-            if (next != null)
-            {
-                Connect(prev, next);
-            }
-
+            
+            Connect(prev.Previous, wordNode);
+            Connect(prev, wordNode.Next);
             Connect(wordNode, prev);
+            
+            ActualizeBorders(wordNode, prev);
+        }
+
+        private void ActualizeBorders(WordNode wordNode, WordNode prev)
+        {
             if (_head == prev)
             {
                 _head = wordNode;
@@ -64,13 +63,22 @@ namespace TextAnalyzer.Service.BusinessObjects
 
         private static void Connect(WordNode prev, WordNode next)
         {
-            prev.Next = next;
-            next.Previous = prev;
+            if (prev != null)
+            {
+                prev.Next = next;
+            }
+
+            if (next != null)
+            {
+                next.Previous = prev;
+            }
         }
 
         private void AddToTail(WordNode wordNode)
         {
-            if (wordNode.Next != null || wordNode.Previous != null)
+            if (wordNode.Next != null
+                || wordNode.Previous != null
+                || wordNode.Value.WordFrequency > 1)
             {
                 return;
             }
@@ -78,6 +86,7 @@ namespace TextAnalyzer.Service.BusinessObjects
             if (_tail != null)
             {
                 _tail.Next = wordNode;
+                wordNode.Previous = _tail;
             }
 
             _tail = wordNode;
