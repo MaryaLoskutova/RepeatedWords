@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.Service", "Tex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.IntegrationTests", "TextAnalyzer.IntegrationTests\TextAnalyzer.IntegrationTests.csproj", "{C7A14023-DAC0-43FF-922C-F4AC02EF508B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.ConsoleApp", "TextAnalyzer.ConsoleApp\TextAnalyzer.ConsoleApp.csproj", "{5DB87156-9A94-4CC2-AE7E-D6FD10547275}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB87156-9A94-4CC2-AE7E-D6FD10547275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB87156-9A94-4CC2-AE7E-D6FD10547275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB87156-9A94-4CC2-AE7E-D6FD10547275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB87156-9A94-4CC2-AE7E-D6FD10547275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
