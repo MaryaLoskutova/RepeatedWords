@@ -26,6 +26,7 @@ namespace TextAnalyzer.Service.BusinessObjects
         }
 
         public bool Any() => _wordsDictionary.Any();
+
         public List<WordInfo> SelectTop(int count)
         {
             return _wordsOrder.SelectTop(count);
@@ -43,7 +44,7 @@ namespace TextAnalyzer.Service.BusinessObjects
         {
             if (!_wordsDictionary.ContainsKey(word))
             {
-                var wordStatistic = new WordInfo {Word = word};
+                var wordStatistic = new WordInfo(word);
                 _wordsDictionary[word] = new WordNode(wordStatistic);
             }
 

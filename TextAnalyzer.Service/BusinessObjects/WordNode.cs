@@ -8,7 +8,7 @@
         }
 
         public WordInfo Value { get; }
-        public WordNode Next { get; set; } 
+        public WordNode Next { get; set; }
         public WordNode Previous { get; set; }
     }
 }

@@ -7,7 +7,13 @@ namespace TextAnalyzer.Service.BusinessObjects
         private WordsStatistic _neighbours;
         private int _topNeighboursCount = 5;
 
-        public string Word { get; set; }
+        public WordInfo(string word)
+        {
+            Word = word;
+            _neighbours = new WordsStatistic();
+        }
+
+        public string Word { get; }
         public int WordFrequency { get; set; }
 
         public void AddNeighbour(string neighbour)

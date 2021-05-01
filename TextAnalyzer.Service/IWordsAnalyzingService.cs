@@ -1,7 +1,10 @@
-﻿namespace TextAnalyzer.Service
+﻿using System.Collections.Generic;
+using TextAnalyzer.Service.BusinessObjects;
+
+namespace TextAnalyzer.Service
 {
-    public class IWordsAnalyzingService
+    public interface IWordsAnalyzingService
     {
-        
+        WordInfo[] SelectTopWordsInfo(string[] words, int top);
     }
 }
