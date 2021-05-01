@@ -53,14 +53,14 @@ namespace TextAnalyzer.Service
                 return false;
             }
 
-            return words[index] == words[neighbourIndex];
+            return words[index].GetHashCode() == words[neighbourIndex].GetHashCode();
         }
 
         private static bool NeedSkip(string[] words, int index, int neighbourIndex)
         {
             if (neighbourIndex < 0
                 || neighbourIndex >= words.Length
-                || words[index] == words[neighbourIndex])
+                || words[index].GetHashCode() == words[neighbourIndex].GetHashCode())
             {
                 return true;
             }

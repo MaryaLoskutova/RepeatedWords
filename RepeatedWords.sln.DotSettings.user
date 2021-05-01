@@ -1,5 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac9950e2_002Daca0_002D4a3e_002D9bce_002Da66529cf8b86/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from WordsAnalyzingServiceTest.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;ProjectFile&gt;CE89B718-AE1B-4A0E-A6EB-51004EB9F882/f:WordsAnalyzingServiceTest.cs&lt;/ProjectFile&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c8ca54a_002D4e16_002D44c6_002D99fd_002Dda08b92236c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;TextAnalyzer.IntegrationTests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="D:\TestProjects\RepeatedWords\RepeatedWords\TextAnalyzer.IntegrationTests" Presentation="&amp;lt;TextAnalyzer.IntegrationTests&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1475f4cd_002Df79a_002D4b3b_002Db375_002D00d2369e57c0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AnalyzeWordsTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::CE89B718-AE1B-4A0E-A6EB-51004EB9F882::net5.0::TextAnalyzer.IntegrationTests.FileAnalyzingServiceTest.AnalyzeWordsTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1fcaf9af_002Dd122_002D43a0_002D8ce9_002D1aa905a1f044/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AnalyzeWordsTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::CE89B718-AE1B-4A0E-A6EB-51004EB9F882::net5.0::TextAnalyzer.IntegrationTests.FileAnalyzingServiceTest.AnalyzeWordsTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>

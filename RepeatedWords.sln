@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.Service", "TextAnalyzer.Service\TextAnalyzer.Service.csproj", "{3303A993-4D7E-43F4-98F8-1F8889BBDF88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.UnitTests", "TextAnalyzer.UnitTests\TextAnalyzer.UnitTests.csproj", "{CE89B718-AE1B-4A0E-A6EB-51004EB9F882}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.IntegrationTests", "TextAnalyzer.IntegrationTests\TextAnalyzer.IntegrationTests.csproj", "{C7A14023-DAC0-43FF-922C-F4AC02EF508B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{3303A993-4D7E-43F4-98F8-1F8889BBDF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3303A993-4D7E-43F4-98F8-1F8889BBDF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3303A993-4D7E-43F4-98F8-1F8889BBDF88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE89B718-AE1B-4A0E-A6EB-51004EB9F882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE89B718-AE1B-4A0E-A6EB-51004EB9F882}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE89B718-AE1B-4A0E-A6EB-51004EB9F882}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE89B718-AE1B-4A0E-A6EB-51004EB9F882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A14023-DAC0-43FF-922C-F4AC02EF508B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
