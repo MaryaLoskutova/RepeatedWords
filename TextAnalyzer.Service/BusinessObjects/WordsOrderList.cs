@@ -13,9 +13,9 @@ namespace TextAnalyzer.Service.BusinessObjects
             LiftToRightPosition(wordNode);
         }
 
-        public List<WordStatistic> SelectTop(int count)
+        public List<WordInfo> SelectTop(int count)
         {
-            var result = new List<WordStatistic>();
+            var result = new List<WordInfo>();
             var current = _head;
             while (current != null
                    && count >= 0)

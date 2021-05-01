@@ -2,12 +2,12 @@
 {
     public class WordNode
     {
-        public WordNode(WordStatistic value)
+        public WordNode(WordInfo value)
         {
             Value = value;
         }
 
-        public WordStatistic Value { get; set; }
+        public WordInfo Value { get; set; }
         public WordNode Next { get; set; } 
         public WordNode Previous { get; set; }
     }
