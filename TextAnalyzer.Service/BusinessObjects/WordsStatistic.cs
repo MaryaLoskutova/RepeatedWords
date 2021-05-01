@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace TextAnalyzer.Service.BusinessObjects
 {
@@ -13,30 +15,28 @@ namespace TextAnalyzer.Service.BusinessObjects
             _wordsDictionary = new Dictionary<string, WordNode>();
         }
 
-        public void AddWord(string word)
+        public void AddWord(string word, IEnumerable<string> neighbours = null)
         {
             IncrementWord(word);
             _wordsOrder.Actualize(_wordsDictionary[word]);
-        }
-        
-        public bool TryAddWordNeighbours(string word, IEnumerable<string> neighbours)
-        {
-            if (!_wordsDictionary.ContainsKey(word))
+            if (neighbours != null)
             {
-                return false;
+                AddNeighbours(word, neighbours);
             }
-
-            foreach (var neighbour in neighbours)
-            {
-                _wordsDictionary[word].Value.Neighbours.AddWord(neighbour);
-            }
-
-            return true;
         }
 
-        public List<WordInfo> SelectTopWords(int count)
+        public bool Any() => _wordsDictionary.Any();
+        public List<WordInfo> SelectTop(int count)
         {
             return _wordsOrder.SelectTop(count);
+        }
+
+        private void AddNeighbours(string word, IEnumerable<string> neighbours)
+        {
+            foreach (var neighbour in neighbours)
+            {
+                _wordsDictionary[word].Value.AddNeighbour(neighbour);
+            }
         }
 
         private void IncrementWord(string word)
