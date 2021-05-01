@@ -18,7 +18,11 @@ namespace TextAnalyzer.Service.BusinessObjects
             IncrementWord(word);
             _wordsOrder.Actualize(_wordsDictionary[word]);
         }
-        
+
+        public List<WordStatistic> SelectTopWords(int count)
+        {
+            return _wordsOrder.SelectTop(count);
+        }
 
         private void IncrementWord(string word)
         {

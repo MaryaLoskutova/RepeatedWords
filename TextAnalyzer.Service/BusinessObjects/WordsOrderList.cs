@@ -1,14 +1,30 @@
-﻿namespace TextAnalyzer.Service.BusinessObjects
+﻿using System.Collections.Generic;
+
+namespace TextAnalyzer.Service.BusinessObjects
 {
     public class WordsOrderList
     {
         private WordNode _head;
         private WordNode _tail;
-        
+
         public void Actualize(WordNode wordNode)
         {
             AddToTail(wordNode);
             LiftToRightPosition(wordNode);
+        }
+
+        public List<WordStatistic> SelectTop(int count)
+        {
+            var result = new List<WordStatistic>();
+            var current = _head;
+            while (current != null
+                   && count >= 0)
+            {
+                result.Add(current.Value);
+                current = current.Next;
+            }
+
+            return result;
         }
 
         private void LiftToRightPosition(WordNode wordNode)
@@ -63,6 +79,7 @@
             {
                 _tail.Next = wordNode;
             }
+
             _tail = wordNode;
             _head ??= wordNode;
         }
