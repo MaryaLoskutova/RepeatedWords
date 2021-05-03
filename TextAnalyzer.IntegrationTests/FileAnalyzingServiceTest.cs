@@ -20,9 +20,20 @@ namespace TextAnalyzer.IntegrationTests
         [TestCaseSource(nameof(AnalyzeWordsTestData))]
         public void AnalyzeWordsTest(string path, int top, string[] expected)
         {
-            var words = Array.Empty<string>();
             var result = _fileAnalyzingService.AnalyzeWords(path, top);
-            Assert.AreEqual(expected, result.Select(x => x.ToString()).ToArray());
+            Assert.AreEqual(true, result.IsSuccess);
+            Assert.AreEqual(null, result.Message);
+            Assert.AreEqual(expected, result.Value.Select(x => x.ToString()).ToArray());
+        }
+        
+        [Test]
+        public void AnalyzeWordsWhenIncorrectFilePathTest()
+        {
+            var expected = Result<WordInfo[]>.Fail("Incorrect file path");
+            var result = _fileAnalyzingService.AnalyzeWords("path", 10);
+            Assert.AreEqual("Incorrect file path", result.Message);
+            Assert.AreEqual(false, result.IsSuccess);
+            Assert.AreEqual(null, result.Value);
         }
 
         private static IEnumerable<TestCaseData> AnalyzeWordsTestData()

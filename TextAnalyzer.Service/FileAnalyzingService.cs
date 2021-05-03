@@ -15,15 +15,21 @@ namespace TextAnalyzer.Service
             _wordsAnalyzingService = wordsAnalyzingService;
         }
 
-        public WordInfo[] AnalyzeWords(string fileName, int topWords)
+        public Result<WordInfo[]> AnalyzeWords(string fileName, int topWords)
         {
+            if (!File.Exists(fileName))
+            {
+                return Result<WordInfo[]>.Fail("Incorrect file path");
+            }
+            
             var text = File.ReadAllText(fileName);
             var words = Regex.Split(text.ToLower().Trim(), @"[^a-zа-я]")
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToArray();
-            return !words.Any() 
+            var wordsInfo = !words.Any() 
                 ? Array.Empty<WordInfo>() 
                 : _wordsAnalyzingService.SelectTopWordsInfo(words, topWords);
+            return Result<WordInfo[]>.Ok(wordsInfo);
         }
     }
 }

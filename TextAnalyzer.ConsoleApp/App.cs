@@ -20,14 +20,19 @@ namespace TextAnalyzer.ConsoleApp
             var topCount = GetTopCount();
 
             var words = _fileAnalyzingService.AnalyzeWords(path, topCount);
-
             WriteResult(words);
         }
 
-        private static void WriteResult(WordInfo[] words)
+        private static void WriteResult(Result<WordInfo[]> result)
         {
             Console.WriteLine("\r\nРезультат");
-            foreach (var word in words)
+            if (!result.IsSuccess)
+            {
+                Console.WriteLine(result.Message);
+                return;
+            }
+
+            foreach (var word in result.Value)
             {
                 Console.WriteLine(word);
             }
